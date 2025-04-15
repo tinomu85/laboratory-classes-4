@@ -1,16 +1,9 @@
 const express = require("express");
-
-const { LOGOUT_LINKS } = require("../constants/navigation");
+const logoutController = require("../controllers/logoutController");
 
 const router = express.Router();
 
-router.get("/", (_request, response) => {
-  response.render("logout.ejs", {
-    headTitle: "Shop - Logout",
-    path: "/logout",
-    activeLinkPath: "/logout",
-    menuLinks: LOGOUT_LINKS,
-  });
-});
+router.get("/", logoutController.showLogoutView);
+router.get("/kill", logoutController.terminateApplication);
 
 module.exports = router;
